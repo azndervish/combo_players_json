@@ -1,0 +1,17 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "§6Combined Mod: §dMorphing Bracelet §7+ §dBody Actions §7+ §cShrink Ray §7[RP]",
+    "description": "§gCombined functionality: Morphing, Sitting/Laying/Crawling, and Size Scaling\n§b1.21.70+ §7| §8Combined by Copilot",
+    "uuid": "d4e5f678-9012-3456-789a-bcdef0123456",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 21, 70]
+  },
+  "modules": [
+    {
+      "type": "resources",
+      "uuid": "e5f67890-1234-5678-9abc-def012345678",
+      "version": [1, 0, 0]
+    }
+  ]
+}
