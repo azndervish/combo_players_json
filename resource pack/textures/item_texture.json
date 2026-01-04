@@ -1,0 +1,78 @@
+{
+  "resource_pack_name": "Combined Mod Pack",
+  "texture_name": "atlas.items",
+  "texture_data": {
+    "morph:morphing_bracelet": {
+      "textures": "textures/items/morphing_bracelet"
+    },
+    "morph:scroll_of_souls": {
+      "textures": "textures/items/scroll_of_souls"
+    },
+    "morph:scroll_of_souls.filled": {
+      "textures": "textures/items/scroll_of_souls.filled"
+    },
+    "morph:llama_spit": {
+      "textures": "textures/items/llama_spit"
+    },
+    "morph:wither_skull": {
+      "textures": "textures/items/wither_skull"
+    },
+    "morph:blue_wither_skull": {
+      "textures": "textures/items/blue_wither_skull"
+    },
+    "morph:vex": {
+      "textures": "textures/items/vex"
+    },
+    "morph:vex_spawned": {
+      "textures": "textures/items/vex_spawned"
+    },
+    "morph:evoker_fangs": {
+      "textures": "textures/items/evoker_fangs"
+    },
+    "morph:guardian_curse": {
+      "textures": "textures/items/guardian_curse"
+    },
+    "morph:sonic_boom": {
+      "textures": "textures/items/sonic_boom"
+    },
+    "morph:dragon_fireball": {
+      "textures": "textures/items/dragon_fireball"
+    },
+    "shrink_ray": {
+      "textures": "textures/tiny/change_entities_size/items/shrink_ray"
+    },
+    "tiny:shrink_ray": {
+      "textures": "textures/tiny/change_entities_size/items/shrink_ray"
+    },
+    "unshrink_ray": {
+      "textures": "textures/tiny/change_entities_size/items/unshrink_ray"
+    },
+    "tiny:unshrink_ray": {
+      "textures": "textures/tiny/change_entities_size/items/unshrink_ray"
+    },
+    "growth_ray": {
+      "textures": "textures/tiny/change_entities_size/items/growth_ray"
+    },
+    "tiny:growth_ray": {
+      "textures": "textures/tiny/change_entities_size/items/growth_ray"
+    },
+    "small_camera": {
+      "textures": "textures/tiny/change_entities_size/items/small_camera"
+    },
+    "tiny:small_camera": {
+      "textures": "textures/tiny/change_entities_size/items/small_camera"
+    },
+    "regular_camera": {
+      "textures": "textures/tiny/change_entities_size/items/regular_camera"
+    },
+    "tiny:regular_camera": {
+      "textures": "textures/tiny/change_entities_size/items/regular_camera"
+    },
+    "large_camera": {
+      "textures": "textures/tiny/change_entities_size/items/large_camera"
+    },
+    "tiny:large_camera": {
+      "textures": "textures/tiny/change_entities_size/items/large_camera"
+    }
+  }
+}
