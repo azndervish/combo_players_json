@@ -1,0 +1,15 @@
+## Combined text from Morphing Bracelet, Shrink Ray, and RealSitPickup mods
+
+## Morphing Bracelet
+item.morphing_bracelet:morphing_bracelet.name=Morphing Bracelet
+item.morphing_bracelet:scroll_of_souls.name=Empty Scroll of Souls
+item.morphing_bracelet:scroll_of_souls.filled.name=Scroll of Souls
+
+## Shrink Ray
+item.tiny:shrink_ray.name=§cShrink Ray
+item.tiny:unshrink_ray.name=§eUnshrink Ray
+item.tiny:growth_ray.name=§aGrowth Ray
+
+## RealSitPickup
+item.sirob:sitlay.name=§dMore Body Actions - Sit, Lay, and Crawl §c[UNMODIFIABLE]
+item.sirob:pickupcarry.name=§dPick Up & Carry §c[UNMODIFIABLE]
