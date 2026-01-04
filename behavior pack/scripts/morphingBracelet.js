@@ -14,39 +14,57 @@ export class MorphingBracelet {
     const { itemStack, source } = event;
     if (itemStack.typeId == "morph:morphing_bracelet") {
       const containerSlot = source.getComponent("minecraft:inventory").container.getSlot(source.selectedSlotIndex);
-      const data = JSON.parse(itemStack.getDynamicProperty("morphs")).map(id => morphs.find(morph => morph.id == id)).filter(morph => morph != undefined);
-      const menu = new ActionFormData().title({ translate: "morph.menu.title" }).body("morph:morph_menu");
-      for (const morph of data) {  
-        menu.button(morph.id, morph.icon ? morph.icon : `textures/icons/morph_menu/${morph.entity.split(":")[1]}/${morph.id.split(":")[1]}`);
-      };
-      menu.show(source).then(result => {
-        if (!result.canceled && data[result.selection].id != source.getMorph().id) {
-          if (isShulkerValidLocation(source, data[result.selection].id)) {
-            removeMorph(itemStack, data[result.selection].id);
-            if (!addMorph(itemStack, source.getMorph().id)) {
-              for (let slot = 0; slot < source.getComponent("minecraft:inventory").container.size; slot++) {
-                const itemStack = source.getComponent("minecraft:inventory").container.getItem(slot);
-                if (addMorph(itemStack, source.getMorph().id)) {
-                  source.getComponent("minecraft:inventory").container.setItem(slot, itemStack);
-                  break;
+      // Add error handling for dynamic property parsing
+      try {
+        const morphsProperty = itemStack.getDynamicProperty("morphs");
+        if (!morphsProperty) {
+          // Initialize if not set
+          itemStack.setDynamicProperty("morphs", JSON.stringify(["morph:player"]));
+          containerSlot.setItem(itemStack);
+          source.sendMessage({ rawtext: [{ text: "§eMorphing bracelet initialized! Use again to open menu." }]});
+          return;
+        }
+        const data = JSON.parse(morphsProperty).map(id => morphs.find(morph => morph.id == id)).filter(morph => morph != undefined);
+        if (data.length === 0) {
+          source.sendMessage({ rawtext: [{ text: "§cNo morphs available! Kill mobs to collect morphs." }]});
+          return;
+        }
+        const menu = new ActionFormData().title({ translate: "morph.menu.title" }).body("morph:morph_menu");
+        for (const morph of data) {  
+          menu.button(morph.id, morph.icon ? morph.icon : `textures/icons/morph_menu/${morph.entity.split(":")[1]}/${morph.id.split(":")[1]}`);
+        };
+        menu.show(source).then(result => {
+          if (!result.canceled && data[result.selection].id != source.getMorph().id) {
+            if (isShulkerValidLocation(source, data[result.selection].id)) {
+              removeMorph(itemStack, data[result.selection].id);
+              if (!addMorph(itemStack, source.getMorph().id)) {
+                for (let slot = 0; slot < source.getComponent("minecraft:inventory").container.size; slot++) {
+                  const itemStack = source.getComponent("minecraft:inventory").container.getItem(slot);
+                  if (addMorph(itemStack, source.getMorph().id)) {
+                    source.getComponent("minecraft:inventory").container.setItem(slot, itemStack);
+                    break;
+                  };
                 };
               };
-            };
-            source.addTag("morph:disable_addMorph()");
-            source.triggerEvent(data[result.selection].id);
-            if (source.getGameMode() == "creative") { containerSlot.setItem(itemStack); }
-            else {
-              if (itemStack.getComponent("minecraft:durability").maxDurability - 1 > itemStack.getComponent("minecraft:durability").damage) {
-                itemStack.getComponent("minecraft:durability").damage = itemStack.getComponent("minecraft:durability").damage + 1;
-                containerSlot.setItem(itemStack);
-              } else if (itemStack.getComponent("minecraft:durability").maxDurability - 1 <= itemStack.getComponent("minecraft:durability").damage) {
-                containerSlot.setItem(undefined);
-                source.dimension.playSound("respawn_anchor.deplete", source.location, { volume: 1.0, pitch: (Math.random() * 0.4) + 0.8 });
+              source.addTag("morph:disable_addMorph()");
+              source.triggerEvent(data[result.selection].id);
+              if (source.getGameMode() == "creative") { containerSlot.setItem(itemStack); }
+              else {
+                if (itemStack.getComponent("minecraft:durability").maxDurability - 1 > itemStack.getComponent("minecraft:durability").damage) {
+                  itemStack.getComponent("minecraft:durability").damage = itemStack.getComponent("minecraft:durability").damage + 1;
+                  containerSlot.setItem(itemStack);
+                } else if (itemStack.getComponent("minecraft:durability").maxDurability - 1 <= itemStack.getComponent("minecraft:durability").damage) {
+                  containerSlot.setItem(undefined);
+                  source.dimension.playSound("respawn_anchor.deplete", source.location, { volume: 1.0, pitch: (Math.random() * 0.4) + 0.8 });
+                };
               };
-            };
-          } else { source.onScreenDisplay.setActionBar({ rawtext: [{ translate: "morph.shulker.invalid_location" }]}); };
-        };
-      });
+            } else { source.onScreenDisplay.setActionBar({ rawtext: [{ translate: "morph.shulker.invalid_location" }]}); };
+          };
+        });
+      } catch (error) {
+        source.sendMessage({ rawtext: [{ text: "§cError opening morph menu. Try again or get a new bracelet." }]});
+        console.warn("Morph bracelet error:", error);
+      }
     };
   };
   onBeforeDurabilityDamage(event) {
