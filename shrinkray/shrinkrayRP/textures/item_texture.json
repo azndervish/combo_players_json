@@ -1,0 +1,47 @@
+{
+  "resource_pack_name": "shrink ray",
+  "texture_name": "atlas.items",
+  "texture_data": {
+    "shrink_ray": {
+      "textures": "textures/tiny/change_entities_size/items/shrink_ray"
+    },
+    "tiny:shrink_ray": {
+      "textures": "textures/tiny/change_entities_size/items/shrink_ray"
+    },
+
+    "unshrink_ray": {
+      "textures": "textures/tiny/change_entities_size/items/unshrink_ray"
+    },
+    "tiny:unshrink_ray": {
+      "textures": "textures/tiny/change_entities_size/items/unshrink_ray"
+    },
+
+    "growth_ray": {
+      "textures": "textures/tiny/change_entities_size/items/growth_ray"
+    },
+    "tiny:growth_ray": {
+      "textures": "textures/tiny/change_entities_size/items/growth_ray"
+    },
+
+    "small_camera": {
+      "textures": "textures/tiny/change_entities_size/items/small_camera"
+    },
+    "tiny:small_camera": {
+      "textures": "textures/tiny/change_entities_size/items/small_camera"
+    },
+
+    "regular_camera": {
+      "textures": "textures/tiny/change_entities_size/items/regular_camera"
+    },
+    "tiny:regular_camera": {
+      "textures": "textures/tiny/change_entities_size/items/regular_camera"
+    },
+
+    "large_camera": {
+      "textures": "textures/tiny/change_entities_size/items/large_camera"
+    },
+    "tiny:large_camera": {
+      "textures": "textures/tiny/change_entities_size/items/large_camera"
+    }
+  }
+}

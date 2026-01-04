@@ -1,0 +1,31 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "§4§l§oshrink ray and growth ray by §bXBOXGAMER YT426",
+    "description": "By XBOXGAMER YT426 shrinks and grows any mobs and even yourself",
+    "uuid": "50792bf1-aa3e-4e4e-9046-88fa69aff174",
+    "version": [1, 0, 8],
+    "min_engine_version": [1, 21, 50]
+  },
+
+  "modules": [
+    {
+      "type": "script",
+      "language": "javascript",
+      "uuid": "ba8c58e6-176d-4f18-a3af-e22031c0d721",
+      "version": [1, 0, 8],
+      "entry": "scripts/main.js"
+    }
+  ],
+
+  "dependencies": [
+    {
+      "module_name": "@minecraft/server",
+      "version": "1.13.0"
+    },
+    {
+      "uuid": "0af481a9-9978-46cb-bb97-2610d23c6c45",
+      "version": [1, 0, 8]
+    }
+  ]
+}
