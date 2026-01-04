@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Create zip file
-        run: zip -r c.zip behavior_pack resource_pack
+        run: zip -r c.zip "behavior pack" "resource pack"
 
       - name: Get current date
         id: date
